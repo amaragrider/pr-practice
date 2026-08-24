@@ -12,12 +12,12 @@ pipeline {
                 PATH = "${JAVA_HOME}/bin:${env.PATH}"
             }
             steps {
-                sh 'mvn -B clean package'
+                sh 'cd starter && mvn -B clean package'
             }
         }
         stage('Build Image') {
             steps {
-                sh 'docker build -t team-skeleton .'
+                sh 'cd starter && docker build -t team-skeleton .'
             }
         }
         stage('Smoke Test') {
